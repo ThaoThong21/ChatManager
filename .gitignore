@@ -1,0 +1,10 @@
+# Ignore .vscode directory
+.vscode/
+
+# Ignore .o files (compiled object files)
+*.o
+
+# Ignore .i files
+*.i
+#ignore build directory
+*/build/
