@@ -1,6 +1,6 @@
 #include <httplib.h>
 #include <iostream>
-
+#include "renderHTML.h"
 int main() {
     httplib::Server server;
     std::cout<<"HELLO start"<<std::endl;
@@ -8,7 +8,9 @@ int main() {
         res.set_content("Hello, World!", "text/plain");
     });
     server.Get("/", [](const httplib::Request& req, httplib::Response& res) {
-        res.set_content("Welcome!", "text/plain");
+        res.set_header("Content-Type", "text/html");
+
+        res.set_content(Render::htmlContent("../../template/login.html"), "text/html");
     });
     
     if (server.listen("localhost", 9163)) {

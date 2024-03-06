@@ -6,9 +6,12 @@ cmake_minimum_required(VERSION 3.12)
 project(AT)
 
 set(CMAKE_CXX_STANDARD 14)
-
+set(SOURCES
+    src/main.cpp
+    src/renderHTML.h
+)
 add_executable(ChatManager 
-               src/main.cpp)
+                ${SOURCES})
 
 
 # Add the lib/httplib directory to the CMake module path
