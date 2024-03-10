@@ -7,6 +7,8 @@ project(AT)
 
 set(CMAKE_CXX_STANDARD 14)
 set(SOURCES
+    src/my_handle.cpp
+    src/my_handle.h
     src/main.cpp
     src/renderHTML.h
 )

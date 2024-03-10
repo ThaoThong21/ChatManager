@@ -1,11 +1,18 @@
 #include <httplib.h>
 #include <iostream>
 #include "renderHTML.h"
+#include "my_handle.h"
 int main() {
     httplib::Server server;
     std::cout<<"HELLO start"<<std::endl;
-    server.Get("/hello", [](const httplib::Request& req, httplib::Response& res) {
-        res.set_content("Hello, World!", "text/plain");
+    server.Post("/login", [&](const httplib::Request& req, httplib::Response& res){
+        my_handle::handle_login(req, res);
+    });
+    server.Get("/chatboard", [&](const httplib::Request& req, httplib::Response& res){
+        my_handle::handle_chatboard(req, res);
+    });
+    server.Get("/errorpage", [](const httplib::Request& req, httplib::Response& res) {
+        my_handle::handle_errorpage(req, res);
     });
     server.Get("/", [](const httplib::Request& req, httplib::Response& res) {
         res.set_header("Content-Type", "text/html");
